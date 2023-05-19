@@ -1,0 +1,44 @@
+<div *ngIf="!this.ds.isWorking" class="container">
+  <h1 *ngIf="!setToMod">Create a new set</h1>
+  <h1 *ngIf="setToMod">Edit set</h1>
+
+  <form [formGroup]="setForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" placeholder="My set" class="form-control" formControlName="title">
+      <span class="help-block" *ngIf="!setForm.get('title').valid && setForm.get('title').touched">Title is
+        required</span>
+    </div>
+    <div class="form-group">
+      <label for="cards">Cards:</label>
+      <div class="row">
+        <div class="col" formArrayName="card-fronts">
+          <div class="card" *ngFor="let cf of getCfControls() ;index as i ">
+            <input type="text" id="front{{i}}" placeholder="Card2 front" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+        <div class="col" formArrayName="card-backs">
+          <div class="card" *ngFor="let cb of getCbControls();index as i ">
+            <input type="text" id="back{{i}}" placeholder="Card 2 back" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+        <span class="help-block"
+        *ngIf="(!setForm.get('card-fronts').valid && setForm.get('card-fronts').touched) ||
+        (!setForm.get('card-backs').valid && setForm.get('card-backs').touched)"
+        >All cards must have something on both sides.</span>
+      </div>
+    </div>
+    <div class="form-group flex">
+      <div>
+        <button type="button" class="btn btn-primary" (click)="addCard()">Add card</button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+        <button type="submit" class="btn btn-success" [disabled]="!setForm.valid">Save</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+<div *ngIf="this.ds.isWorking"><app-spinner></app-spinner></div>

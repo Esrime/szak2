@@ -1,0 +1,26 @@
+.card{
+  margin: auto;
+  text-align: center;
+  max-width: 60vw;
+  min-height: 1.5rem;
+  vertical-align: middle;
+}
+
+hr{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.col{
+  margin: .5rem;
+}
+
+p{
+  height: 4rem;
+  padding-top: 1rem;
+}
+
+.answer-container{
+  max-width: 60vw;
+  margin: auto;
+}

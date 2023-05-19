@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Cards Against Tests</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/sets" routerLinkActive="active">Sets</a>
+        </li>
+        <li class="nav-item" *ngIf="this.as.isAuthenticated">
+          <a class="nav-link" routerLink="/classes" routerLinkActive="active">Classes</a>
+        </li>
+      </ul>
+
+      <ul class="d-flex navbar-nav">
+        <li *ngIf="!this.as.isAuthenticated" class="nav-item">
+          <a routerLink="/login" class="btn btn-primary">Login</a>
+        </li>
+        <li *ngIf="this.as.isAuthenticated" class="nav-item flex" >
+          <p class="nav-item">{{email}}</p>
+          <button type="button" class="btn btn-primary" (click)="logout()">Log out</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

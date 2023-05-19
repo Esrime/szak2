@@ -1,0 +1,14 @@
+<div class="flex-container" *ngIf="classes.length>0">
+  <div class="card col-3" *ngFor="let s of classes">
+    <div class="card-body" routerLink="/classes">
+      <h5 class="card-title">{{s.title}}</h5>
+      <p class="card-text"> {{s.sets.length}} sets
+      </p>
+      <p class="text-muted text-end">{{s.creator.username}}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="classes.length==0">
+  <p>You currently have no classes.</p>
+</div>
+<p class="text-end"><a routerLink="/classes">See all</a></p>

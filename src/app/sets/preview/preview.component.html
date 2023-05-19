@@ -1,0 +1,17 @@
+<div *ngIf="!this.ds.isWorking">
+  <div class="flex-container" *ngIf="sets.length!=0">
+    <div class="card col-3" *ngFor="let s of sets">
+      <div class="card-body" routerLink="/sets">
+        <h5 class="card-title">{{s.title}}</h5>
+        <p class="card-text"> {{s.itemNum}} items
+        </p>
+        <p class="text-muted text-end">{{s.creator}}</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="sets.length==0">
+    <p> There are not sets yet.</p>
+  </div>
+  <p class="text-end"><a routerLink="/sets">See all</a></p>
+</div>
+<div *ngIf="this.ds.isWorking"></div>

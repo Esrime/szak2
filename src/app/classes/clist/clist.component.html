@@ -1,0 +1,21 @@
+<h1>My classes</h1>
+<div *ngIf="this.ds.isWorking">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="!this.ds.isWorking">
+  <div class="flex-container" *ngIf="classList.length!=0">
+    <div class="card col-3" *ngFor="let c of classList">
+      <div class="card-body" routerLink="/class/detail/{{c.id}}">
+        <h5 class="card-title">{{c.title}}</h5>
+        <p class="card-text"> {{c.sets.length}} sets
+        </p>
+        <p class="text-muted text-end">{{c.creator.username}}</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="classList.length==0">
+    <p>You currently have no classes.</p>
+  </div>
+</div>
+<a class="addButton btn btn-primary btn-lg rounded-circle" *ngIf="this.as.isAuthenticated && this.as.role=='teacher'"
+  routerLink="/classes/new">+</a>

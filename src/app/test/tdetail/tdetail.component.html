@@ -1,0 +1,27 @@
+<h1>{{test.title}}</h1>
+<div *ngIf="this.as.role=='student'">
+<button type="button" routerLink="practice" *ngIf="moreThan4" class="margin btn btn-primary">Take test</button>
+<button type="button" disabled *ngIf="!moreThan4" class="margin btn btn-primary">Not enough cards</button>
+</div>
+<div class="flex-container">
+  <div class="card col-3" *ngFor="let s of test.sets">
+    <div class="card-body" routerLink="/sets/detail/{{s.id}}">
+      <h5 class="card-title">{{s.title}}</h5>
+      <p class="card-text"> {{s.itemNum}} items
+      </p>
+      <p class="text-muted text-end">{{s.creator}}</p>
+    </div>
+  </div>
+</div>
+<hr>
+<div *ngIf="this.as.role=='teacher'">
+  <h4>Attempts</h4>
+  <div *ngIf="attempts.length!=0">
+    <ul *ngFor="let a of attempts">
+      <li>{{a.student}} made {{a.mistakes}} mistakes in completing the test.</li>
+    </ul>
+  </div>
+  <div *ngIf="attempts.length==0">
+    <p id="tp">No student has completed the test yet.</p>
+  </div>
+</div>

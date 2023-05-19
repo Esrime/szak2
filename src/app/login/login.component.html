@@ -1,0 +1,30 @@
+<h1>To access all features you need to be logged in.</h1>
+
+<div class="container">
+  <div *ngIf="isWorking" style="text-align: center;">
+    <app-spinner></app-spinner>
+  </div>
+  <form *ngIf="!isWorking" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" id="email" placeholder="example@mail.com" class="form-control" ngModel name="email" required email>
+    </div>
+    <!-- <div class="form-group" *ngIf="isRegistering">
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="User" class="form-control" ngModel name="username" [required]="isRegistering">
+    </div> -->
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="*********" class="form-control" ngModel name="password" required minlength="6">
+    </div>
+    <div class="form-group form-check" *ngIf="isRegistering">
+      <input type="checkbox" name="teacher" id="teacher" class="form-check-input" ngModel name="isTeacher">
+      <label for="teacher" class="form-check-label">I'm a teacher</label>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">{{isRegistering? "Register":"Login"}}</button>
+      <button type="button" class="btn btn-outline-primary" (click)="toggleRegister()">{{isRegistering? "I have an account":"I'm new"}}</button>
+    </div>
+    <div class="alert alert-danger" *ngIf="this.error">{{this.error}}</div>
+  </form>
+</div>

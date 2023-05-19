@@ -1,0 +1,26 @@
+<div class="container">
+  <h1 class="card">{{question}}</h1>
+  <hr>
+  <div class="answer-container">
+    <div class="row">
+      <div class="col">
+        <p class="card" (click)="check(0)">{{answers[0].text}}</p>
+      </div>
+      <div class="col">
+        <p class="card" (click)="check(1)">{{answers[1].text}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="card" (click)="check(2)">{{answers[2].text}}</p>
+      </div>
+      <div class="col">
+        <p class="card" (click)="check(3)">{{answers[3].text}}</p>
+      </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="this.isWrong">This is not the correct answer.</div>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" [style.width]="ind*multiplier+'%'"></div>
+    </div>
+  </div>
+</div>

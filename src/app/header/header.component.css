@@ -1,0 +1,16 @@
+.navbar-brand{
+  font-weight: bolder;
+  font-variant: small-caps;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.flex{
+  display: flex;
+  align-items: baseline;
+}
+.flex p{
+  margin-right: 1rem;
+}

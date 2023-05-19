@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>{{class.title}}</h1>
+  <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h4 for="title">Title:</h4>
+      <input type="text" id="title" placeholder="Class" class="form-control" formControlName="title">
+      <span class="help-block" *ngIf="!testForm.get('title').valid && testForm.get('title').touched">Title is
+        required</span>
+    </div>
+    <h4>Sets</h4>
+    <div class="form-group form-check flex-column">
+      <label formArrayName="sets" class="form-check-label" *ngFor="let s of getSetControls(); index as i">
+        <input type="checkbox" id="sets{{i}}" class="form-check-input" [formControlName]="i">
+        {{class.sets[i].title}}
+      </label>
+    </div>
+    <div class="form-group flex">
+      <button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-success" [disabled]="!testForm.valid">Save</button>
+      <div>
+        <span class="help-block" *ngIf="emptyList">At least one set must be selected.</span>
+      </div>
+    </div>
+  </form>
+</div>

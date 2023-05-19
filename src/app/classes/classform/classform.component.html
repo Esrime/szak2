@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Create a new class</h1>
+
+  <form [formGroup]="classForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h4 for="title">Title:</h4>
+      <input type="text" id="title" placeholder="Class" class="form-control" formControlName="title">
+      <span class="help-block" *ngIf="!classForm.get('title').valid && classForm.get('title').touched">Title is
+        required</span>
+    </div>
+    <h4>Sets:<sup data-toggle="tooltip" data-placement="top" title="Only sets made by you can be selected">?</sup></h4>
+    <div class="form-group form-check flex-column" *ngIf="filteredSets && filteredSets.length != 0">
+      <label formArrayName="setsControl" class="form-check-label" *ngFor="let s of getSetControls(); index as i">
+        <input *ngIf="filteredSets[i].title" type="checkbox" id="setsControl{{i}}" class="form-check-input" [formControlName]="i">
+        {{filteredSets[i].title}}
+      </label>
+    </div>
+    <div *ngIf="filteredSets && filteredSets.length == 0">No set made by you was found.</div>
+    <h4>Students:</h4>
+    <div class="form-group form-check flex-column" *ngIf="students && students.length != 0">
+      <label formArrayName="students" class="form-check-label" *ngFor="let s of getStudentControls(); index as i">
+        <input *ngIf="students[i].email" type="checkbox" id="students{{i}}" class="form-check-input" [formControlName]="i">
+          {{students[i].email}}
+      </label>
+    </div>
+    <div *ngIf="students && students.length == 0">No student was found.</div>
+    <hr>
+    <div class="form-group flex">
+      <button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-success" [disabled]="!classForm.valid">Save</button>
+      <div>
+        <span class="help-block" *ngIf="emptyList">At least one student and one set must be selected.</span>
+      </div>
+    </div>
+  </form>
+</div>

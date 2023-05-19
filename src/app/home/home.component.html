@@ -1,0 +1,8 @@
+<div >
+  <h3>Sets</h3>
+  <app-preview></app-preview>
+  <hr>
+  <h3>Classes</h3>
+  <app-cpreview *ngIf="this.as.isAuthenticated"></app-cpreview>
+  <div *ngIf="!this.as.isAuthenticated"><p>You have to log in to view your classes.</p></div>
+</div>

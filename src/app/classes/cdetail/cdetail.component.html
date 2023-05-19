@@ -1,0 +1,37 @@
+<div *ngIf="!this.ds.isWorking">
+  <h1>{{class.title}}</h1>
+  <div *ngIf="this.as.isAuthenticated && isOwn">
+    <!-- <button type="button" class="rmargin btn btn-outline-warning" (click)="edit()">Edit</button> -->
+    <button type="button" class="btn btn-outline-danger" (click)="delete()">Delete</button>
+  </div>
+  <hr>
+  <h2>Sets</h2>
+  <div class="flex-container">
+    <div class="card col-3" *ngFor="let s of class.sets">
+      <div class="card-body" routerLink="/sets/detail/{{s.id}}">
+        <h5 class="card-title">{{s.title}}</h5>
+        <p class="card-text"> {{s.itemNum}} items
+        </p>
+        <p class="text-muted text-end">{{s.creator}}</p>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h2>Tests</h2>
+  <div class="flex-container" *ngIf="class.tests">
+    <div class="card col-3" *ngFor="let t of tests">
+      <div class="card-body" routerLink="testdetail/{{t.id}}">
+        <h5 class="card-title">{{t.title}}</h5>
+        <p class="card-text"> {{t.sets.length}} sets
+        </p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!class.tests">
+    <p>There are currently no tests for this class</p>
+  </div>
+  <button  *ngIf="this.as.isAuthenticated && isOwn" class="btn btn-primary" routerLink="testedit">Add test</button>
+</div>
+<div *ngIf="this.ds.isWorking">
+  <app-spinner></app-spinner>
+</div>

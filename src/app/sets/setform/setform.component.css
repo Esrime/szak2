@@ -1,0 +1,26 @@
+.form-group{
+  margin: 1rem;
+}
+
+.card{
+  padding: .5rem;
+  margin: .5rem;
+}
+.card input{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn{
+  margin: .5em;
+}
+
+.help-block{
+  color: red;
+}

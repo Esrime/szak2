@@ -1,0 +1,27 @@
+li{
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em;
+}
+
+p{
+  margin: 16px 0px;
+}
+
+.card-view {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+} 
+
+.card-view .btn {
+  height: 250px;
+}
+
+.margin{
+  margin: 1rem;
+}
+
+.rmargin{
+  margin-right: 1rem;
+}
