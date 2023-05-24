@@ -1,7 +1,10 @@
 <div *ngIf="!this.ds.isWorking">
   <h1>My sets</h1>
+  <div class="form-group">
+    <input type="text" id="filter" placeholder="Search" class="form-control" [(ngModel)]="searchText">
+  </div>
   <div class="flex-container" *ngIf="setList.length!=0">
-    <div class="card col-3" *ngFor="let s of setList">
+    <div class="card col-3" *ngFor="let s of setList |  filterText: searchText">
       <div class="card-body" routerLink="detail/{{s.id}}">
         <h5 class="card-title">{{s.title}}</h5>
         <p class="card-text"> {{s.itemNum}} items

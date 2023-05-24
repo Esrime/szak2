@@ -29,6 +29,7 @@ export class SetformComponent implements OnInit {
       'title': new FormControl(this.setToMod ? this.setToMod.title : null, Validators.required),
       'card-fronts': new FormArray([]),
       'card-backs': new FormArray([]),
+      'tags': new FormControl(this.setToMod ? this.setToMod.tags : null),
     });
 
     if (this.setToMod) {
@@ -59,8 +60,8 @@ export class SetformComponent implements OnInit {
       cards: this.setCards,
       itemNum: this.setCards.length,
       creator: this.as.email,
+      tags: this.setForm.value['tags']
     }
-    console.log(newSet)
     if (this.setToMod) {
       this.ds.updateSet(newSet, this.route.snapshot.params['id']);
     } else {

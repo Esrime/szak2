@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ListComponent } from './sets/list/list.component';
+import { ListComponent, FilterTextPipe } from './sets/list/list.component';
 import { DetailComponent } from './sets/detail/detail.component';
 import { FlipcardComponent } from './sets/flipcard/flipcard.component';
 import { PreviewComponent } from './sets/preview/preview.component';
@@ -47,6 +47,7 @@ import { TpracticeComponent } from './test/tpractice/tpractice.component';
     TestformComponent,
     TdetailComponent,
     TpracticeComponent,
+    FilterTextPipe,
   ],
   imports: [
     AppRoutingModule,
