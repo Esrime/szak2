@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="class" class="container">
   <h1>{{class.title}}</h1>
   <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -22,4 +22,7 @@
       </div>
     </div>
   </form>
+</div>
+<div *ngIf="!class">
+  <app-spinner></app-spinner>
 </div>

@@ -1,5 +1,5 @@
-<div *ngIf="this.ds.isWorking" class="container"><app-spinner></app-spinner></div>
-<div *ngIf="!this.ds.isWorking" class="container">
+<div *ngIf="!set" class="container"><app-spinner></app-spinner></div>
+<div *ngIf="set" class="container">
   <h1 class="card">{{question}}</h1>
   <hr>
   <div class="answer-container">

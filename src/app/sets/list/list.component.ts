@@ -11,7 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 export class ListComponent {
   public setList: Set[] = [];
 
-  constructor(private ds: DataService, protected as: AuthService) { 
+  constructor(protected ds: DataService, protected as: AuthService) { 
     this.setList= [];
     this.ds.getSets().subscribe(sets => {
       this.setList=sets;

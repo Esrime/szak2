@@ -15,7 +15,7 @@ export class DetailComponent implements OnInit {
   isOwn=false;
 
 
-  constructor(private route: ActivatedRoute, protected ds: DataService, private router: Router, protected as:AuthService) {
+  constructor(private route: ActivatedRoute, protected ds: DataService, private router: Router, private as:AuthService) {
   }
   
   ngOnInit(): void {

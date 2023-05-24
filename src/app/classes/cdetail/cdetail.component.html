@@ -1,4 +1,4 @@
-<div *ngIf="!this.ds.isWorking">
+<div *ngIf="class">
   <h1>{{class.title}}</h1>
   <div *ngIf="this.as.isAuthenticated && isOwn">
     <!-- <button type="button" class="rmargin btn btn-outline-warning" (click)="edit()">Edit</button> -->
@@ -32,6 +32,6 @@
   </div>
   <button  *ngIf="this.as.isAuthenticated && isOwn" class="btn btn-primary" routerLink="testedit">Add test</button>
 </div>
-<div *ngIf="this.ds.isWorking">
+<div *ngIf="!class">
   <app-spinner></app-spinner>
 </div>

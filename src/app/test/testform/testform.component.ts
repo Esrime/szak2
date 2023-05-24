@@ -53,7 +53,7 @@ export class TestformComponent {
   }
 
   cancel() {
-    this.router.navigate(['classdetail', this.route.snapshot.params['id']]);
+    this.router.navigate(['class/detail', this.route.snapshot.params['id']]);
   }
 
 }

@@ -1,7 +1,4 @@
-<div *ngIf="this.ds.isWorking">
-  <app-spinner></app-spinner>
-</div>
-<div *ngIf="!this.ds.isWorking" class="container">
+<div *ngIf="set" class="container">
   <h1>{{set.title}}</h1>
   <div *ngIf="this.as.isAuthenticated && isOwn">
     <button type="button" class="rmargin btn btn-outline-warning" (click)="edit()">Edit</button>
@@ -29,4 +26,7 @@
       </li>
     </ul>
   </div>
+</div> -->
+<div *ngIf="!set">
+  <app-spinner></app-spinner>
 </div>

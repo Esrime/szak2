@@ -1,4 +1,4 @@
-<div *ngIf="!this.ds.isWorking" class="container">
+<div *ngIf="setForm" class="container">
   <h1 *ngIf="!setToMod">Create a new set</h1>
   <h1 *ngIf="setToMod">Edit set</h1>
 
@@ -41,4 +41,4 @@
   </form>
 
 </div>
-<div *ngIf="this.ds.isWorking"><app-spinner></app-spinner></div>
+<div *ngIf="!setForm"><app-spinner></app-spinner></div>
