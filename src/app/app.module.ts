@@ -24,6 +24,7 @@ import { InterceptorService } from './services/interceptor.service';
 import { TestformComponent } from './test/testform/testform.component';
 import { TdetailComponent } from './test/tdetail/tdetail.component';
 import { TpracticeComponent } from './test/tpractice/tpractice.component';
+import { AchievementsComponent } from './achievements/achievements.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { TpracticeComponent } from './test/tpractice/tpractice.component';
     TdetailComponent,
     TpracticeComponent,
     FilterTextPipe,
+    AchievementsComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -66,6 +66,7 @@ export class SetformComponent implements OnInit {
       this.ds.updateSet(newSet, this.route.snapshot.params['id']);
     } else {
       this.ds.addSet(newSet);
+      this.as.updateStat('setCreated');
     }
     this.router.navigate(['/']);
 

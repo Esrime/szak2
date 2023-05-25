@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -14,7 +13,10 @@ export class HeaderComponent implements OnInit {
   constructor(protected as: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.as.user.subscribe(user => this.email = user.email);
+    this.as.user.subscribe(user => {
+      this.email = user.email;
+      this.as.setStats();
+    });
   }
 
   logout(){

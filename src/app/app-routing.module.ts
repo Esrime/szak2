@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AchievementsComponent } from './achievements/achievements.component';
 import { CdetailComponent } from './classes/cdetail/cdetail.component';
 import { ClassformComponent } from './classes/classform/classform.component';
 import { ClistComponent } from './classes/clist/clist.component';
@@ -28,10 +29,11 @@ const routes: Routes = [
   { path: "class/detail/:id/testdetail/:tid", component: TdetailComponent },
   { path: "class/detail/:id/testdetail/:tid/practice", component: TpracticeComponent },
   { path: "class/detail/:id/testedit", component: TestformComponent },
+  { path: "achievements", component: AchievementsComponent },
   { path: "login", component: LoginComponent },
   { path: "user", component: HomeComponent },
-  // { path: "not-found", component: NotFoundComponent },
-  // { path: "**", redirectTo:'/not-found' },
+  { path: "not-found", component: NotFoundComponent },
+  { path: "**", redirectTo:'/not-found' },
 ];
 
 @NgModule({

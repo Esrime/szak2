@@ -37,10 +37,13 @@ export class TpracticeComponent {
     this.isWrong = false;
     if (this.ind >= this.cards.length) {
       confirm("You finished practicing this set!")
-      // let user = this.bs.getCurrentUser()
       if (this.as.role=="student"){
         let data ={student:this.as.email, mistakes:this.errCount}
         this.ds.postAttempt(this.route.snapshot.params['id'],this.route.snapshot.params['tid'],data)
+      }
+      this.as.updateStat('testSolved');
+      if (this.errCount==0) {
+        this.as.updateStat('testPerfect');
       }
       this.router.navigate(["class/detail",this.route.snapshot.params['id'],"testdetail",this.route.snapshot.params['tid']])
     }

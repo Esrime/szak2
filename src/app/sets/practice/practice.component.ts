@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { Set } from "../../models/set.model";
 
@@ -20,8 +21,9 @@ export class PracticeComponent implements OnInit, OnDestroy {
   tick = 1000;
   multiplier =1;
   isWrong =false;
+  isPerfect=true;
 
-  constructor(private route: ActivatedRoute, protected ds: DataService, private router: Router) {
+  constructor(private route: ActivatedRoute, protected ds: DataService, private router: Router, private as: AuthService) {
     this.ds.getSet(this.route.snapshot.params['id']).subscribe(set => {
       this.set = set;
       this.generateAnswers();
@@ -43,6 +45,7 @@ export class PracticeComponent implements OnInit, OnDestroy {
   check(index: number) {
     if (this.answers[index].ind != this.ind) {
       this.isWrong=true;
+      this.isPerfect=false;
       return;
     }
     this.ind++;
@@ -95,6 +98,7 @@ export class PracticeComponent implements OnInit, OnDestroy {
 
   timeUp() {
     confirm("Time's up! You have correctly answered " + this.ind + " of " + this.set.cards.length + " questions.")
+    this.as.updateStat('setPerfect');
     this.router.navigate(['/sets/detail', this.route.snapshot.params['id']])
   }
 

@@ -19,14 +19,17 @@ interface AuthRespData {
 })
 export class AuthService {
 
-  ADMIN_EMAIL= "admin@admin.com";
+  ADMIN_EMAIL = "admin@admin.com";
   private usersUrl = "https://szak2-2598a-default-rtdb.europe-west1.firebasedatabase.app/users.json"
   user = new BehaviorSubject<User>(null);
   isAuthenticated = false;
   email;
-  role="student";
+  role = "student";
+  stats;
+  private id;
+  param
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   signup(email: string, pw: string) {
     return this.http.post<AuthRespData>("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBwiep8428Vl0gf9Wsx3EWBTe0Tn0vlnBk",
@@ -72,9 +75,61 @@ export class AuthService {
   addUser(email: string, role: string) {
     this.http.post(this.usersUrl, {
       email: email,
-      // username: username,
-      role: role
+      role: role,
+      stats: {
+        setCreated: 0,
+        setPerfect: 0,
+        testSolved: 0,
+        testPerfect: 0,
+      }
     }).subscribe()
+  }
+
+  setStats() {
+    this.http.get(this.usersUrl)
+      .pipe(
+        map((resp) => {
+          for (const key in resp) {
+            if (resp.hasOwnProperty(key)) {
+              if (resp[key].email == this.email) {
+                this.stats = resp[key].stats
+                this.id = key
+
+              }
+            }
+          }
+        })
+      ).subscribe();
+  }
+
+  updateStat(type: any) {
+    // console.log(this.id, ++this.stats[type]);
+    this.stats[type]++;
+    switch (type) {
+      case "setCreated":
+        this.param = {
+          "setCreated": this.stats[type]
+        }
+        break;
+      case "setPerfect":
+        this.param = {
+          "setPerfect": this.stats[type]
+        }
+        break;
+      case "testSolved":
+        this.param = {
+          "testSolved": this.stats[type]
+        }
+        break;
+      case "testPerfect":
+        this.param = {
+          "testPerfect": this.stats[type]
+        }
+
+        break;
+    }
+    this.http.patch("https://szak2-2598a-default-rtdb.europe-west1.firebasedatabase.app/users/" + this.id + "/stats.json", this.param).subscribe();
+
   }
 
   setRole() {
@@ -84,7 +139,7 @@ export class AuthService {
           for (const key in resp) {
             if (resp.hasOwnProperty(key)) {
               if (resp[key].email == this.email) {
-               this.role=resp[key].role
+                this.role = resp[key].role
               }
             }
           }
