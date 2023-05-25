@@ -1,7 +1,7 @@
 <div *ngIf="!this.ds.isWorking">
   <div class="flex-container" *ngIf="sets.length!=0">
     <div class="card col-3" *ngFor="let s of sets">
-      <div class="card-body" routerLink="/sets">
+      <div class="card-body" routerLink="sets/detail/{{s.id}}">
         <h5 class="card-title">{{s.title}}</h5>
         <p class="card-text"> {{s.itemNum}} items
         </p>

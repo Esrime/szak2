@@ -1,10 +1,10 @@
 <div class="flex-container" *ngIf="classes.length>0">
-  <div class="card col-3" *ngFor="let s of classes">
-    <div class="card-body" routerLink="/classes">
-      <h5 class="card-title">{{s.title}}</h5>
-      <p class="card-text"> {{s.sets.length}} sets
+  <div class="card col-3" *ngFor="let c of classes">
+    <div class="card-body" routerLink="/class/detail/{{c.id}}">
+      <h5 class="card-title">{{c.title}}</h5>
+      <p class="card-text"> {{c.sets.length}} sets
       </p>
-      <p class="text-muted text-end">{{s.creator.username}}</p>
+      <p class="text-muted text-end">{{c.creator.username}}</p>
     </div>
   </div>
 </div>
