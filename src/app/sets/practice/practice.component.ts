@@ -19,16 +19,16 @@ export class PracticeComponent implements OnInit, OnDestroy {
   countDown: Subscription = null;
   counter = 0;
   tick = 1000;
-  multiplier =1;
-  isWrong =false;
-  isPerfect=true;
+  multiplier = 1;
+  isWrong = false;
+  isPerfect = true;
 
   constructor(private route: ActivatedRoute, protected ds: DataService, private router: Router, private as: AuthService) {
     this.ds.getSet(this.route.snapshot.params['id']).subscribe(set => {
       this.set = set;
       this.generateAnswers();
       this.counter = this.set.cards.length * 10
-      this.multiplier= 100/this.set.cards.length;
+      this.multiplier = 100 / this.set.cards.length;
     })
     this.timed = this.route.snapshot.params['timed'] == "true"
   }
@@ -44,13 +44,14 @@ export class PracticeComponent implements OnInit, OnDestroy {
 
   check(index: number) {
     if (this.answers[index].ind != this.ind) {
-      this.isWrong=true;
-      this.isPerfect=false;
+      this.isWrong = true;
+      this.isPerfect = false;
       return;
     }
     this.ind++;
-    this.isWrong=false;
+    this.isWrong = false;
     if (this.ind >= this.set.cards.length) {
+      if (this.isPerfect) this.as.updateStat('setPerfect');
       confirm("You finished practicing this set!")
       this.router.navigate(['/sets/detail', this.route.snapshot.params['id']])
     }
@@ -98,7 +99,7 @@ export class PracticeComponent implements OnInit, OnDestroy {
 
   timeUp() {
     confirm("Time's up! You have correctly answered " + this.ind + " of " + this.set.cards.length + " questions.")
-    this.as.updateStat('setPerfect');
+    if (this.isPerfect) this.as.updateStat('setPerfect');
     this.router.navigate(['/sets/detail', this.route.snapshot.params['id']])
   }
 

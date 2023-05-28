@@ -18,12 +18,12 @@
       <div class="row">
         <div class="col" formArrayName="card-fronts">
           <div class="card" *ngFor="let cf of getCfControls() ;index as i ">
-            <input type="text" id="front{{i}}" placeholder="Card2 front" class="form-control" [formControlName]="i">
+            <input type="text" id="front{{i}}" placeholder="Card front" class="form-control" [formControlName]="i">
           </div>
         </div>
         <div class="col" formArrayName="card-backs">
           <div class="card" *ngFor="let cb of getCbControls();index as i ">
-            <input type="text" id="back{{i}}" placeholder="Card 2 back" class="form-control" [formControlName]="i">
+            <input type="text" id="back{{i}}" placeholder="Card back" class="form-control" [formControlName]="i">
           </div>
         </div>
         <span class="help-block" *ngIf="(!setForm.get('card-fronts').valid && setForm.get('card-fronts').touched) ||
