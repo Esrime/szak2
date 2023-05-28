@@ -14,9 +14,7 @@
     </div>
   </div>
   <div *ngIf="setList.length==0">
-    <p>
-      There are no sets yet.
-    </p>
+    <p id="tp">There are no sets yet.</p>
   </div>
   <a class="addButton btn btn-primary btn-lg rounded-circle" *ngIf="this.as.isAuthenticated"
     routerLink="/sets/new">+</a>

@@ -103,7 +103,6 @@ export class AuthService {
   }
 
   updateStat(type: any) {
-    // console.log(this.id, ++this.stats[type]);
     this.stats[type]++;
     switch (type) {
       case "setCreated":

@@ -13,7 +13,7 @@ export class ListComponent {
 
   searchText = ''
 
-  constructor(protected ds: DataService, protected as: AuthService) {
+  constructor(public ds: DataService, public as: AuthService) {
     this.setList = [];
     this.ds.getSets().subscribe(sets => {
       this.setList = sets;

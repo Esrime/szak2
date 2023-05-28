@@ -11,7 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 export class ClistComponent {
   classList: Class[] = [];
 
-  constructor(public ds: DataService, protected as: AuthService) {
+  constructor(public ds: DataService, public as: AuthService) {
     this.classList = [];
     this.ds.getClasses().subscribe(classes => {
       if (this.as.ADMIN_EMAIL == this.as.email) {

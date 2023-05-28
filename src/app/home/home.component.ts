@@ -8,6 +8,6 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent {
 
-  constructor(protected as: AuthService) { }
+  constructor(public as: AuthService) { }
 
 }

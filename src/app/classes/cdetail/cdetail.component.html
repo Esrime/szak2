@@ -28,9 +28,9 @@
     </div>
   </div>
   <div *ngIf="!class.tests">
-    <p>There are currently no tests for this class</p>
+    <p id="tp">There are currently no tests for this class</p>
   </div>
-  <button  *ngIf="this.as.isAuthenticated && isOwn" class="btn btn-primary" routerLink="testedit">Add test</button>
+  <button *ngIf="this.as.isAuthenticated && isOwn" class="btn btn-primary" routerLink="testedit">Add test</button>
 </div>
 <div *ngIf="!class">
   <app-spinner></app-spinner>

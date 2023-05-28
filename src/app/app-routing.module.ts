@@ -25,7 +25,6 @@ const routes: Routes = [
   { path: "classes", component: ClistComponent },
   { path: "classes/new", component: ClassformComponent },
   { path: "class/detail/:id", component: CdetailComponent },
-  // { path: "class/detail/:id/edit", component: CdetailComponent },
   { path: "class/detail/:id/testdetail/:tid", component: TdetailComponent },
   { path: "class/detail/:id/testdetail/:tid/practice", component: TpracticeComponent },
   { path: "class/detail/:id/testedit", component: TestformComponent },

@@ -9,6 +9,6 @@ import { DataService } from '../services/data.service';
 })
 export class AchievementsComponent {
 
-  constructor(protected ds: DataService, protected as: AuthService) { }
+  constructor(public ds: DataService, public as: AuthService) { }
 
 }

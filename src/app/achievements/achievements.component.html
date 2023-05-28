@@ -1,27 +1,39 @@
 <div *ngIf="!this.ds.isWorking">
   <h1>My achievements</h1>
-  <ul>
+  <ul
+    *ngIf="this.as.stats.setCreated >0 || this.as.stats.setPerfect >0 || this.as.stats.testSolved >0 || this.as.stats.testPerfect >0">
     <li *ngIf="this.as.stats.setCreated >0"><em><b>The journey begins</b></em>: You created your first set.</li>
     <li *ngIf="this.as.stats.setCreated >5"><em><b>The journey begins</b></em>: You created 5 sets.</li>
     <li *ngIf="this.as.stats.setCreated >10"><em><b>The journey begins</b></em>: You created 10 sets.</li>
     <li *ngIf="this.as.stats.setCreated >50"><em><b>The journey begins</b></em>: You created 50 sets.</li>
 
     <li *ngIf="this.as.stats.setPerfect >0"><em><b>Just perfect</b></em>: You made no mistake during practice.</li>
-    <li *ngIf="this.as.stats.setPerfect >5"><em><b>The journey begins</b></em>: You made no mistake during practice 5 times.</li>
-    <li *ngIf="this.as.stats.setPerfect >10"><em><b>The journey begins</b></em>: You made no mistake during practice 10 times.</li>
-    <li *ngIf="this.as.stats.setPerfect >50"><em><b>The journey begins</b></em>: You made no mistake during practice 50 times.</li>
+    <li *ngIf="this.as.stats.setPerfect >5"><em><b>Just perfect</b></em>: You made no mistake during practice 5
+      times.</li>
+    <li *ngIf="this.as.stats.setPerfect >10"><em><b>Just perfect</b></em>: You made no mistake during practice 10
+      times.</li>
+    <li *ngIf="this.as.stats.setPerfect >50"><em><b>Just perfect</b></em>: You made no mistake during practice 50
+      times.</li>
 
     <li *ngIf="this.as.stats.testSolved >0"><em><b>...and done!</b></em>: You finished your first test.</li>
     <li *ngIf="this.as.stats.testSolved >5"><em><b>...and done!</b></em>: You finished 5 tests.</li>
     <li *ngIf="this.as.stats.testSolved >10"><em><b>...and done!</b></em>: You finished 10 tests.</li>
     <li *ngIf="this.as.stats.testSolved >50"><em><b>...and done!</b></em>: You finished 50 tests.</li>
 
-    <li *ngIf="this.as.stats.testPerfect >0"><em><b>Studying was worth it</b></em>: You finished a test without any mistakes.</li>
-    <li *ngIf="this.as.stats.testPerfect >5"><em><b>Studying was worth it</b></em>: You finished a test without any mistakes 5 times.</li>
-    <li *ngIf="this.as.stats.testPerfect >10"><em><b>Studying was worth it</b></em>: You finished a test without any mistakes 10 times.</li>
-    <li *ngIf="this.as.stats.testPerfect >50"><em><b>Studying was worth it</b></em>: You finished a test without any mistakes 50 times.</li>
-    
+    <li *ngIf="this.as.stats.testPerfect >0"><em><b>Studying was worth it</b></em>: You finished a test without any
+      mistakes.</li>
+    <li *ngIf="this.as.stats.testPerfect >5"><em><b>Studying was worth it</b></em>: You finished a test without any
+      mistakes 5 times.</li>
+    <li *ngIf="this.as.stats.testPerfect >10"><em><b>Studying was worth it</b></em>: You finished a test without any
+      mistakes 10 times.</li>
+    <li *ngIf="this.as.stats.testPerfect >50"><em><b>Studying was worth it</b></em>: You finished a test without any
+      mistakes 50 times.</li>
+
   </ul>
+  <p *ngIf="this.as.stats.setCreated ==0 && this.as.stats.setPerfect ==0 && this.as.stats.testSolved ==0 && this.as.stats.testPerfect ==0"
+    >
+    You have not completed any achievements yet.
+  </p>
 </div>
 <div *ngIf="this.ds.isWorking">
   <app-spinner></app-spinner>

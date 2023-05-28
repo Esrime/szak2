@@ -12,7 +12,7 @@ import { DataService } from 'src/app/services/data.service';
 export class CdetailComponent {
   class: Class = null;
   tests = []
-  protected isOwn = false;
+  isOwn = false;
   isLoading=true;
 
   constructor(private route: ActivatedRoute, public ds: DataService, private router: Router, public as: AuthService) {
